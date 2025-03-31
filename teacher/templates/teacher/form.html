@@ -10,8 +10,15 @@
     <h1>The Teacher Form</h1>
     <form action='' method="post">
         {% csrf_token %}
-        <table>
-        {{form.as_table}}</table>
+        {{form.name.label_tag}}
+        {{form.name}} <br> <br>
+
+        {{form.email.label_tag}}
+        {{form.email}} <br> <br>
+
+        {{form.phone_number.label_tag}}
+        {{form.phone_number}} <br> <br>
+        
 
         <button type="submit" > Submit
         </button>
