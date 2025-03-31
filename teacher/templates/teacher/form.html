@@ -10,8 +10,8 @@
     <h1>The Teacher Form</h1>
     <form action='' method="post">
         {% csrf_token %}
-        <form action="">
-        {{form.as_table}} </form>
+        <table>
+        {{form.as_table}}</table>
 
         <button type="submit" > Submit
         </button>
