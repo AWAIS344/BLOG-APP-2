@@ -9,8 +9,8 @@ class TeachersForm(forms.Form):
 
     def clean(self):
         cleaned_data=super().clean()
-        name=forms.cleaned_data['name']
-        email=forms.cleaned_data['email']
+        name=self.cleaned_data['name']
+        email=self.cleaned_data['email']
 
         if name[0] != 's' and name[0] != "S" :
             raise forms.ValidationError("The name should start with S or s")

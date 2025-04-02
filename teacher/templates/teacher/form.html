@@ -11,6 +11,9 @@
 
     <h1>The Teacher Form</h1>
     <div class="container">
+        <div class="alert alert-danger p-1 m-2" role="alert" >
+            {{ form.non_field_errors }}
+        </div>
     <form action='' method="post">
         {% csrf_token %}
 
