@@ -14,3 +14,6 @@ class TeachersForm(forms.Form):
 
         if name[0] != 's' and name[0] != "S" :
             raise forms.ValidationError("The name should start with S or s")
+        
+        if email[0] != 's' and email[0] != "S" :
+            raise forms.ValidationError("The Email should start with S or s")
