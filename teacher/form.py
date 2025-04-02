@@ -6,3 +6,11 @@ class TeachersForm(forms.Form):
     phone_number=forms.IntegerField(min_value=11, label="Your Phone Number ( +92 )", widget=forms.NumberInput(attrs={"class":"form-control" , 'placeholder':"Enter Your Phone Number"}))
 
     Bio=forms.CharField(widget=forms.Textarea(attrs={'cols':5,"placeholder":"Bio" , "class":"form-control"}))
+
+    def clean(self):
+        cleaned_data=super().clean()
+        name=forms.cleaned_data['name']
+        email=forms.cleaned_data['email']
+
+        if name[0] != 's' and name[0] != "S" :
+            raise forms.ValidationError("The name should start with S or s")
