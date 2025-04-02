@@ -4,7 +4,7 @@ from django import forms
 def start_s(value):
      
     if value[0] != 'S' and value[0] != 's':
-        raise forms.ValidationError( f"The should start with S or s")
+        raise forms.ValidationError( f"The {value} should start with S or s")
 
 
 class TeachersForm(forms.Form):
