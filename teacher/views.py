@@ -48,10 +48,10 @@ def update(request,id):
 
 
 def delete(request, id):
-    if request.method == "POST":  # ✅ Only allow POST requests
+    if request.method == "POST": 
         teacher = get_object_or_404(Teacher, id=id)
         teacher.delete()
-    return redirect("all_data")  # ✅ Redirect after deletion
+    return redirect("all_data") 
 
 
 def thanks(request):
