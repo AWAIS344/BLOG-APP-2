@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALL data</title>
+</head>
+<body>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+    {% for item in teacher  %}
+     <div>   {{item.name}} </div>
+
+    <a href="{% url 'update' item.id %}"> <input type="button" value="UPDATE"></a> <BR></BR>
+      
+    {% endfor %}
+
+    
+
+</form>
+    
+</body>
+</html>
