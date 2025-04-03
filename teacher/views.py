@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .form import TeachersForm
-from django.http import HttpResponseRedirect , HttpResponse
+from django.http import HttpResponseRedirect , HttpResponse , response
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse
 from .models import Teacher
 from .form import TeachersForm
 
@@ -43,6 +45,14 @@ def update(request,id):
     form=TeachersForm(initial={"name":teacher.name,"email":teacher.email,"phone_number":teacher.phone_number,"Bio":teacher.bio})
     context={"teacher":teacher,"form":form }
     return render(request,"teacher/update.html",context)
+
+
+def delete(request, id):
+    if request.method == "POST":  # ✅ Only allow POST requests
+        teacher = get_object_or_404(Teacher, id=id)
+        teacher.delete()
+    return redirect("all_data")  # ✅ Redirect after deletion
+
 
 def thanks(request):
 
