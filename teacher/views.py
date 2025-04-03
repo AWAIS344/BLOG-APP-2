@@ -28,10 +28,21 @@ def Teacher_view(request):
 
 def all_data(request):
     teacher=Teacher.objects.all()
+
+    if request.method == "POST":
+
+        return HttpResponseRedirect("update")
     context={"teacher":teacher}
 
     return render(request,"teacher/all_data.html",context)
 
+
+def update(request,id):
+    teacher=Teacher.objects.get(id=id)
+
+    form=TeachersForm(initial={"name":teacher.name,"email":teacher.email,"phone_number":teacher.phone_number,"Bio":teacher.bio})
+    context={"teacher":teacher,"form":form }
+    return render(request,"teacher/update.html",context)
 
 def thanks(request):
 
