@@ -27,7 +27,10 @@ def Teacher_view(request):
 
 
 def all_data(request):
-    techer
+    teacher=Teacher.objects.all()
+    context={"teacher":teacher}
+
+    return render(request,"teacher/all_data.html",context)
 
 
 def thanks(request):
