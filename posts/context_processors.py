@@ -14,4 +14,6 @@ def post(request):
     },
 ]
     
+    
+    
     return {"posts":posts}
