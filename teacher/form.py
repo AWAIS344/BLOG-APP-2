@@ -29,7 +29,6 @@ class TeachersForm(forms.ModelForm):
             "phone_number":forms.NumberInput(attrs={"class":"form-control","placeholder":"Your Phone Number"}),
             "bio":forms.Textarea(attrs={"class":"form-control" ,"placeholder":"Write About Yourself"}),
         }
-
         
         # help_texts={
         #     "email":"We only Accept gmails",
