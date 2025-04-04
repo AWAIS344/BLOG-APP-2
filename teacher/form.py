@@ -19,14 +19,20 @@ class TeachersForm(forms.ModelForm):
         }
 
         widgets={
-            "name":forms.TextInput(attrs={"class":"form-control"}),
-            "email":forms.EmailInput(attrs={"class":"form-control"}),
-            "phone_number":forms.NumberInput(attrs={"class":"form-control"}),
-            "bio":forms.Textarea(attrs={"class":"form-control"}),
+            "name":forms.TextInput(attrs={"class":"form-control","placeholder":"e.g Awais Ali Shah"}),
+            "email":forms.EmailInput(attrs={"class":"form-control","placeholder":"e.g xyz@gmail.com" }),
+            "phone_number":forms.NumberInput(attrs={"class":"form-control","placeholder":"Your Phone Number"}),
+            "bio":forms.Textarea(attrs={"class":"form-control" ,"placeholder":"Write About Yourself"}),
         }
 
         help_texts={
             "email":"We only Accept gmails",
+        }
+
+        error_messages={
+            "name":{
+                "required":"Name Fields cannot be Empty"
+            }
         }
         
     # name = forms.CharField( widget=forms.TextInput(attrs={'placeholder':"Enter Your Name", "class":"form-control"}) , min_length=5 , error_messages={'min_length':"Min Lenght of name should be  more than 5","required":"Name field cannot be empty"})
