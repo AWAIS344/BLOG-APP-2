@@ -50,7 +50,7 @@ def update(request,id):
             name=form.cleaned_data['name']
             email=form.cleaned_data['email']
             phone_number=form.cleaned_data['phone_number']
-            bio=form.cleaned_data['Bio']
+            bio=form.cleaned_data['bio']
 
             teacher.name = name
             teacher.email = email
@@ -60,7 +60,7 @@ def update(request,id):
                 
             return redirect("all_data")
     else:
-        form=TeachersForm(initial={"name":teacher.name,"email":teacher.email,"phone_number":teacher.phone_number,"Bio":teacher.bio})
+        form=TeachersForm(initial={"name":teacher.name,"email":teacher.email,"phone_number":teacher.phone_number,"bio":teacher.bio})
     context={"teacher":teacher,"form":form }
     return render(request,"teacher/update.html",context)
 

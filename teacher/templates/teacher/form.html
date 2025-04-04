@@ -10,16 +10,22 @@
 <body>
 
     <h1>The Teacher Form</h1>
+
+    
+      
     <div class="container">
+        {% if form.non_field_errors %}
         <div class="alert alert-danger p-1 m-2" role="alert" >
             {{ form.non_field_errors }}
         </div>
+        {% endif %}
+        
     <form action='' method="post">
         {% csrf_token %}
 
         {% for fields in form  %}
         {{fields.label_tag}}
-        {{fields}} <br> <br>
+        {{fields}} <br> 
 
         {% if fields.errors %}
         <div class="alert alert-danger p-1 m-2" role="alert" >

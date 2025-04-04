@@ -13,6 +13,17 @@ class TeachersForm(forms.ModelForm):
     class Meta:
         model = Teacher
         fields = ['name','email',"phone_number",'bio']
+        labels ={
+            "name":"Your Name",
+            "bio":"Write About Youself"
+        }
+
+        widgets={
+            "name":forms.TextInput(attrs={"class":"form-control"}),
+            "email":forms.EmailInput(attrs={"class":"form-control"}),
+            "phone_number":forms.NumberInput(attrs={"class":"form-control"}),
+            "bio":forms.Textarea(attrs={"class":"form-control"}),
+        }
         
     # name = forms.CharField( widget=forms.TextInput(attrs={'placeholder':"Enter Your Name", "class":"form-control"}) , min_length=5 , error_messages={'min_length':"Min Lenght of name should be  more than 5","required":"Name field cannot be empty"})
     # email=forms.EmailField(label="Your Email"  , required=False , help_text="We accept email of google only" , widget=forms.EmailInput( attrs={ "class":"form-control","placeholder":"Enter Your Email Here"}))
