@@ -1,14 +1,21 @@
 from django import forms
 from .models import Teacher
+from django.core import validators
 
 
-# def start_s(value):
+def start_s(value):
      
-#     if value[0] != 'S' and value[0] != 's':
-#         raise forms.ValidationError( f"The {value} should start with S or s")
+    if value[0] != 'S' and value[0] != 's':
+        raise forms.ValidationError( f"The {value} should start with S or s")
 
 
 class TeachersForm(forms.ModelForm):
+
+    #custom fields
+
+    name=forms.CharField(validators=[validators.MaxLengthValidator(10),start_s ] , widget=forms.TextInput(attrs={"class":"form-control","placeholder":"e.g Awais Ali Shah"}))
+
+    email=forms.EmailField(validators=[start_s],widget=forms.EmailInput(attrs={"class":"form-control","placeholder":"e.g xyz@gmail.com" }),help_text="We only accept Gmail addresses" )
 
     class Meta:
         model = Teacher
@@ -19,15 +26,14 @@ class TeachersForm(forms.ModelForm):
         }
 
         widgets={
-            "name":forms.TextInput(attrs={"class":"form-control","placeholder":"e.g Awais Ali Shah"}),
-            "email":forms.EmailInput(attrs={"class":"form-control","placeholder":"e.g xyz@gmail.com" }),
             "phone_number":forms.NumberInput(attrs={"class":"form-control","placeholder":"Your Phone Number"}),
             "bio":forms.Textarea(attrs={"class":"form-control" ,"placeholder":"Write About Yourself"}),
         }
 
-        help_texts={
-            "email":"We only Accept gmails",
-        }
+        
+        # help_texts={
+        #     "email":"We only Accept gmails",
+        # }
 
         error_messages={
             "name":{
