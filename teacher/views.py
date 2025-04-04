@@ -13,11 +13,12 @@ def Teacher_view(request):
 
         form=TeachersForm(request.POST)
         if form.is_valid():
-            name=form.cleaned_data['name']
-            email=form.cleaned_data['email']
-            phone_number=form.cleaned_data['phone_number']
-            bio=form.cleaned_data['Bio']
-            teacher=Teacher.objects.create(name=name,email=email,phone_number=phone_number,bio=bio)
+            # name=form.cleaned_data['name']
+            # email=form.cleaned_data['email']
+            # phone_number=form.cleaned_data['phone_number']
+            # bio=form.cleaned_data['Bio']
+            # teacher=Teacher.objects.create(name=name,email=email,phone_number=phone_number,bio=bio)
+            form.save()
 
             return HttpResponseRedirect("/thank-you/")
     else:
@@ -42,7 +43,24 @@ def all_data(request):
 def update(request,id):
     teacher=Teacher.objects.get(id=id)
 
-    form=TeachersForm(initial={"name":teacher.name,"email":teacher.email,"phone_number":teacher.phone_number,"Bio":teacher.bio})
+    if request.method == "POST":
+        form = TeachersForm(request.POST)  # Bind form data
+        if form.is_valid():
+           
+            name=form.cleaned_data['name']
+            email=form.cleaned_data['email']
+            phone_number=form.cleaned_data['phone_number']
+            bio=form.cleaned_data['Bio']
+
+            teacher.name = name
+            teacher.email = email
+            teacher.phone_number = phone_number
+            teacher.bio = bio
+            teacher.save()  # Save changes to DB
+                
+            return redirect("all_data")
+    else:
+        form=TeachersForm(initial={"name":teacher.name,"email":teacher.email,"phone_number":teacher.phone_number,"Bio":teacher.bio})
     context={"teacher":teacher,"form":form }
     return render(request,"teacher/update.html",context)
 
