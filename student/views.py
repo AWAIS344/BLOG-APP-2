@@ -6,6 +6,8 @@ from django.http import HttpResponse
 
 def set(request):
 
+    
+    print("view called")
     response=HttpResponse('<h1> Set <h1>')
     response.set_cookie("theme","dark")
 
