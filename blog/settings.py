@@ -51,7 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'student.middleware.CustomFunctionMiddleware',
+    # 'student.middleware.CustomFunctionMiddleware', 
+    "student.middleware.CustomClassMiddleware"
 ]
 
 ROOT_URLCONF = 'blog.urls'
