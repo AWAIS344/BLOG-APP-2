@@ -1,4 +1,4 @@
-
+from django.http import HttpResponse
 #FUNCTION BASEED MIDDLEWARE
 
 # def CustomFunctionMiddleware(get_response):
@@ -50,7 +50,13 @@ class CustomClassMiddleware:
     #     print(view_args)
     #     return None
 
-    
+    def process_exception(self,request,exception):
+
+        if isinstance(exception, ZeroDivisionError):
+            return HttpResponse("You can't divide by zero!", status=400)
+        
+        return HttpResponse("Something went wrong.", status=500)
+        
     
 
     # def __call__(self,request):
