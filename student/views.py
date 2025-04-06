@@ -11,10 +11,12 @@ def set(request):
     print("view called")
 
     # x=1/0
-    response=HttpResponse('<h1> Set <h1>')
+    response=TemplateResponse(request,"student/home.html",{})
     response.set_cookie("theme","dark")
 
     return response
+
+
 
 
 def get(request):
