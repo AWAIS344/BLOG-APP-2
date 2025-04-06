@@ -43,12 +43,15 @@ class CustomClassMiddleware:
 
         return response
     
-    def process_view(self, request,view_func,view_args,view_kwargs):
+    # def process_view(self, request,view_func,view_args,view_kwargs):
 
-        print("Process view ")
-        print(view_func.__name__)
-        print(view_args)
-        return None
+    #     print("Process view ")
+    #     print(view_func.__name__)
+    #     print(view_args)
+    #     return None
+
+    
+    
 
     # def __call__(self,request):
 
