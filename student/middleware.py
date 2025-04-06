@@ -56,6 +56,11 @@ class CustomClassMiddleware:
             return HttpResponse("You can't divide by zero!", status=400)
         
         return HttpResponse("Something went wrong.", status=500)
+    
+    def process_template_response(self,request,response):
+
+        response.context_data['developer'] = 'Awais Ali Shah 👨‍💻'
+        return response
         
     
 
