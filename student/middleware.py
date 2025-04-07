@@ -31,10 +31,11 @@ class CustomClassMiddleware:
 
     def __call__(self, request):
         print("Before View Called")
-        # print(f"Request path: {request.path}")
+        
+        print(f"Request path: {request.path}")
 
-        # if request.path.strip() == '/set/':
-        #     print("Set view is called")
+        if request.path.strip() == '/set/':
+            print("Set view is called")
 
         # Call the view (or the next middleware)
         response = self.get_response(request)
@@ -43,12 +44,12 @@ class CustomClassMiddleware:
 
         return response
     
-    # def process_view(self, request,view_func,view_args,view_kwargs):
+    def process_view(self, request,view_func,view_args,view_kwargs):
 
-    #     print("Process view ")
-    #     print(view_func.__name__)
-    #     print(view_args)
-    #     return None
+        print("Process view ")
+        print(view_func.__name__)
+        print(view_args)
+        return None
 
     def process_exception(self,request,exception):
 
