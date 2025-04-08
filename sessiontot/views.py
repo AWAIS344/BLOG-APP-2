@@ -24,7 +24,7 @@ def delete(request):
 
 def update(request):
 
-    request.session['name']['name1']="Sudais"
+    request.session['name']['name1'] = "Sudais"
 
-    request.session.mofified=True
+    request.session.modified = True
     return HttpResponse("<h1>Getting Updated </h1>")
