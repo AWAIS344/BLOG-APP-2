@@ -16,3 +16,8 @@ def get(request):
     city = request.session['city']
 
     return HttpResponse(f"<h1>Getting Sesssion Contents </h1> <br> {city}")
+
+def delete(request):
+
+    del request.session['city']
+    return HttpResponse("<h1>deleted</h1>")
