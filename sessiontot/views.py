@@ -19,5 +19,6 @@ def get(request):
 
 def delete(request):
 
+    request.session.flush()
     del request.session['city']
     return HttpResponse("<h1>deleted</h1>")
