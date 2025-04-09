@@ -8,9 +8,10 @@
 <body>
 
     <form action="" method="POST">
+        {% csrf_token %}
         {{form}}
-
-        <input type="button" value="Register">
+        <!-- <input type="button" value="Register"> -->
+         <button type="submit">Register</button>
         
     </form>
     
