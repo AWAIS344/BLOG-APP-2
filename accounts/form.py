@@ -4,16 +4,15 @@ from django.contrib.auth.models import User
 
 class RegistartionForm(UserCreationForm):
 
-    first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={"placeholder":"e.g Awais"}))
+    first_name = forms.CharField(required=True, widget=forms.TextInput(attrs={"class":"form-control","placeholder":"e.g Awais"}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={"class":"form-control","placeholder":"e.g Ali"}))
     Email = forms.EmailField(widget=forms.EmailInput(attrs={"class":"form-control","placeholder":"xyz123@gmail.com"}))
+    password1=forms.CharField( widget=forms.PasswordInput(attrs={"placeholder":"e.g ********" , "class":"form-control"}))
+    password2=forms.CharField(widget=forms.PasswordInput(attrs={"placeholder":"e.g ********" , "class":"form-control"}))
 
     class Meta:
         model = User
-        fields = ["username","first_name",]
+        fields = ["username","first_name","last_name","Email"]
         widgets={
             "username":forms.TextInput(attrs={"placeholder":"e.g awais8900" , "class":"form-control"}),
-            "password1":forms.PasswordInput(attrs={"placeholder":"e.g awais8900" , "class":"form-control"}),
-            "password2":forms.PasswordInput(attrs={"placeholder":"e.g awais8900" , "class":"form-control"}),
-
         }

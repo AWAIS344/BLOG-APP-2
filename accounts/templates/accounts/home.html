@@ -31,9 +31,52 @@ Regstration Form
 {% endblock heading %}
 
 {% block content %}
-<form action="" method="POST">
+<!-- <form action="" method="POST">
     {% csrf_token %}
   {{form}}
   <button type="submit">Register</button>
+</form> -->
+<div class="container">
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger p-1 m-2" role="alert" >
+        {{ form.non_field_errors }}
+    </div>
+    {% endif %}
+    
+<form action='' method="post">
+    {% csrf_token %}
+
+    {% for fields in form  %}
+    {{fields.label_tag}}
+    {{fields}}
+
+    {% if fields.errors %}
+    <div class="alert alert-danger p-1 m-2" role="alert" >
+        {{ fields.errors }}
+    </div>
+    {% endif %}
+    
+
+    {% if fields.help_text %}
+
+    <!-- <div class="bg-primary text-light p-2 m-2 rounded " > {{fields.help_text}} </div> -->
+      
+    {% endif %}
+    {% endfor %}
+
+    
+
+    <!-- {{form.email.label_tag}}
+    {{form.email}}
+    {{form.email.errors}} <br> <br>
+
+    {{form.phone_number.label_tag}}
+    {{form.phone_number}}
+    {{form.phone_number.errors}} <br> <br> -->
+    
+
+    <button class="btn btn-primary px-5 py-2 m-2" type="submit" > Submit
+    </button>
 </form>
+</div>
 {% endblock content %}
