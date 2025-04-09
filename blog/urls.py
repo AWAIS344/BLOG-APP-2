@@ -22,6 +22,7 @@ urlpatterns = [
     path("",include("posts.urls")),
     path("teacher",include("teacher.urls")),
     path("student",include("student.urls")),
-    path("session/", include("sessiontot.urls"))
+    path("session/", include("sessiontot.urls")),
+    path("accounts/",include("accounts.urls"))
 
 ]
