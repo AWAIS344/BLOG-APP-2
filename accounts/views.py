@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login,authenticate
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .form import RegistartionForm
+from .form import RegistartionForm,LoginFrom
 
 # Create your views here.
 
@@ -23,7 +23,7 @@ def register(request):
 
 def auth_login(request):
     if request.method == 'POST':
-        form=AuthenticationForm(request=request,data=request.POST)
+        form=LoginFrom(request=request,data=request.POST)
 
         if form.is_valid():
             username=form.cleaned_data['username']
@@ -34,6 +34,7 @@ def auth_login(request):
                 home = reverse("home")
                 return HttpResponseRedirect(home)
     else:
-        form=AuthenticationForm()
+        form=LoginFrom()
     context={"form":form}
     return render(request,"accounts/login.html",context)
+
