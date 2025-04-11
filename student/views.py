@@ -7,7 +7,7 @@ from django.template.response import TemplateResponse
 
 
 def set(request):
-    login=reverse("login")
+    login=reverse("auth-login")
     if not request.user.is_authenticated:
         return HttpResponseRedirect(login)
     else:

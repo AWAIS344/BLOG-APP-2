@@ -23,6 +23,8 @@ urlpatterns = [
     path("teacher/",include("teacher.urls")),
     path("student/",include("student.urls")),
     path("session/", include("sessiontot.urls")),
-    path("accounts/",include("accounts.urls"))
+    path("accounts/",include("accounts.urls")),
+    path("user/",include("django.contrib.auth.urls")),  #Builtin Model ( login, logout etc )
+ 
 
 ]

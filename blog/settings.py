@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'teacher',
     'student',
     'sessiontot',
-    "accounts"
+    "accounts",
+    "user",
 ]
 
 MIDDLEWARE = [
