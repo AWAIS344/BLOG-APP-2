@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
-from django.contrib.auth import login,authenticate
+from django.contrib.auth import login,authenticate,logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .form import RegistartionForm,LoginFrom
@@ -42,4 +42,8 @@ def auth_login(request):
             form=LoginFrom()
         context={"form":form}
         return render(request,"accounts/login.html",context)
+    
 
+def auth_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse("home"))
