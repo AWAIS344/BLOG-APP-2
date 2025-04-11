@@ -1,20 +1,22 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from django.template.response import TemplateResponse
 
 # Create your views here.    
 
 
 def set(request):
-    if request.user.is_authenticated:
-        return HttpResponseRedirect(home)
-    print("view called")
+    login=reverse("login")
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(login)
+    else:
 
-    # x=1/0
-    response=TemplateResponse(request,"student/home.html",{})
-    response.set_cookie("theme","dark")
+        # x=1/0
+        response=TemplateResponse(request,"student/home.html",{})
+        response.set_cookie("theme","dark")
 
-    return response
+        return response
 
 
 

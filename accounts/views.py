@@ -25,19 +25,21 @@ def auth_login(request):
     home = reverse("home")
     if request.user.is_authenticated:
         return HttpResponseRedirect(home)
-    if request.method == 'POST':
-        form=LoginFrom(request=request,data=request.POST)
-
-        if form.is_valid():
-            username=form.cleaned_data['username']
-            password=form.cleaned_data["password"]
-            user=authenticate(username=username,password=password)
-            if user is not None:
-                login(request,user)
-                
-                return HttpResponseRedirect(home)
     else:
-        form=LoginFrom()
-    context={"form":form}
-    return render(request,"accounts/login.html",context)
+
+        if request.method == 'POST':
+            form=LoginFrom(request=request,data=request.POST)
+
+            if form.is_valid():
+                username=form.cleaned_data['username']
+                password=form.cleaned_data["password"]
+                user=authenticate(username=username,password=password)
+                if user is not None:
+                    login(request,user)
+                    
+                    return HttpResponseRedirect(home)
+        else:
+            form=LoginFrom()
+        context={"form":form}
+        return render(request,"accounts/login.html",context)
 
