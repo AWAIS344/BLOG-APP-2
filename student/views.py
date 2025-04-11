@@ -6,8 +6,8 @@ from django.template.response import TemplateResponse
 
 
 def set(request):
-
-
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(home)
     print("view called")
 
     # x=1/0

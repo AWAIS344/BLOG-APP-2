@@ -22,6 +22,9 @@ def register(request):
     return render(request,"accounts/home.html",context)
 
 def auth_login(request):
+    home = reverse("home")
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(home)
     if request.method == 'POST':
         form=LoginFrom(request=request,data=request.POST)
 
@@ -31,7 +34,7 @@ def auth_login(request):
             user=authenticate(username=username,password=password)
             if user is not None:
                 login(request,user)
-                home = reverse("home")
+                
                 return HttpResponseRedirect(home)
     else:
         form=LoginFrom()
