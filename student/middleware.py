@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+import logging
 #FUNCTION BASEED MIDDLEWARE
 
 # def CustomFunctionMiddleware(get_response):
@@ -20,6 +21,8 @@ from django.http import HttpResponse
 
 #CLASS BASED MIDDLEWARE
 
+
+logger = logging.getLogger(__name__)
 class CustomClassMiddleware:
 
     def __init__(self, get_response):
@@ -51,14 +54,19 @@ class CustomClassMiddleware:
         print(view_args)
         return None
 
-    def process_exception(self,request,exception):
+    def process_exception(self, request, exception):
+        # Log the exception with traceback
+        logger.exception("Exception occurred during request processing")
 
         if isinstance(exception, ZeroDivisionError):
+            logger.warning("ZeroDivisionError encountered.")
             return HttpResponse("You can't divide by zero!", status=400)
-        
+
         if isinstance(exception, KeyError):
-            return HttpResponse("The Value Missing or has been Deleted !", status=400)
-        
+            logger.warning("KeyError encountered.")
+            return HttpResponse("The Value Missing or has been Deleted!", status=400)
+
+        logger.error("Unhandled exception: %s", str(exception))
         return HttpResponse("Something went wrong", status=500)
     
     def process_template_response(self,request,response):
