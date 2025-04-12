@@ -7,5 +7,10 @@
 </head>
 <body>
     {{developer}}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    </form>
 </body>
 </html>
