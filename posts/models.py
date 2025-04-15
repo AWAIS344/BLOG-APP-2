@@ -15,5 +15,6 @@ class Posts(models.Model):
 
 class Comment(models.Model):
     commment=models.TextField()
-    
+    post=models.ForeignKey(Posts,on_delete=models.CASCADE)
+
 
