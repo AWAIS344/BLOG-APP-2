@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .form import TeachersForm
+from django.urls import reverse
 from django.http import HttpResponseRedirect , HttpResponse , response
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
@@ -8,7 +9,7 @@ from .form import TeachersForm
 
 # Create your views here.
 def Teacher_view(request):
-
+    thanks=reverse("thanks")
     if request.method == 'POST':
 
         form=TeachersForm(request.POST,request.FILES)
@@ -20,7 +21,7 @@ def Teacher_view(request):
             # teacher=Teacher.objects.create(name=name,email=email,phone_number=phone_number,bio=bio)
             form.save()
 
-            return HttpResponseRedirect("/thank-you/")
+            return HttpResponseRedirect(thanks)
     else:
         form=TeachersForm()
     context={"form":form}
