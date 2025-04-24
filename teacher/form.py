@@ -19,7 +19,7 @@ class TeachersForm(forms.ModelForm):
 
     class Meta:
         model = Teacher
-        fields = ['name','email',"phone_number",'bio']
+        fields = ['name','email',"phone_number",'bio',"profile_image"]
         labels ={
             "name":"Your Name",
             "bio":"Write About Youself"

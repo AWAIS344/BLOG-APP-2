@@ -10,6 +10,7 @@ class Posts(models.Model):
 
     post_title=models.CharField(max_length=60)
     post_content=models.TextField()
+    image=models.ImageField(upload_to='posts_images')
     updated_at =models.DateTimeField(auto_now=True)
     tag=models.ManyToManyField(Tag)
 

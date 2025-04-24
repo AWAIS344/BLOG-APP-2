@@ -16,7 +16,7 @@ Teacher Form
     </div>
     {% endif %}
     
-<form action='' method="post">
+<form action='' method="post" enctype='multipart/form-data'>
     {% csrf_token %}
 
     {% for fields in form  %}
@@ -36,6 +36,8 @@ Teacher Form
       
     {% endif %}
     {% endfor %}
+
+
 
     
 

@@ -23,7 +23,7 @@ posts=[
 
 
 def Home(request):
-    posts=Posts.objects.all()
+    posts=Posts.objects.all() # 
     context={"posts":posts}
     return render(request , "index.html",context)
 
